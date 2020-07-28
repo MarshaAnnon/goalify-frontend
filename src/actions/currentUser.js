@@ -1,3 +1,8 @@
+import { resetLoginForm } from './loginForm.js'
+import { resetSignupForm } from './signupForm.js'
+
+import { getTopics } from './Topics.js'
+
 //synchronous action creators
 export const setCurrentUser = user => {
     return {
@@ -12,7 +17,7 @@ export const clearCurrentUser = () => {
     }
 }
 //asynchronous action creators
-export const login = credentials => {
+export const login = (credentials, history) => {
     return dispatch => {
         return fetch("http://localhost:3000/api/v1/login", {
             credentials: "include",
@@ -23,11 +28,14 @@ export const login = credentials => {
             body: JSON.stringify(credentials)
         })
         .then(resp => resp.json())
-        .then(user => {
-            if (user.error) {
-                alert(user.error)
+        .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
             } else {
-                dispatch(setCurrentUser(user))
+                dispatch(setCurrentUser(resp.data))
+                dispatch(getTopics())
+                dispatch(resetLoginForm())
+                history.push('/')
             }
         })
         .catch(console.log)
@@ -47,6 +55,34 @@ export const logout = () => {
     
 }
 
+export const signup = (credentials, history) => {
+    return dispatch => {
+        const userInfo = {
+            user: credentials
+        }
+        return fetch("http://localhost:3000/api/v1/signup", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"   
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(setCurrentUser(resp.data))
+                dispatch(getTopics())
+                dispatch(resetSignupForm())
+                history.push('/')
+            }
+        })
+        .catch(console.log)
+    }
+}
+
 export const getCurrentUser = () => {
     console.log("DISPATCHING GET CURRENT USER")
     return dispatch => {
@@ -58,11 +94,12 @@ export const getCurrentUser = () => {
             },
         })
         .then(resp => resp.json())
-        .then(user => {
-            if (user.error) {
-                alert(user.error)
+        .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
             } else {
-                dispatch(setCurrentUser(user))
+                dispatch(setCurrentUser(resp.data))
+                dispatch(getTopics())
             }
         })
         .catch(console.log)
