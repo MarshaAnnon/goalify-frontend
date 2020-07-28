@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import { getCurrentUser } from './actions/currentUser'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
@@ -9,7 +9,6 @@ import Login from './components/Login'
 import Logout from './components/Logout'
 import Topics from './components/Topics'
 import NewTopicForm from './components/NewTopicForm'
-import MainContainer from './components/MainContainer.js'
 import './App.css';
 
 class App extends React.Component {
