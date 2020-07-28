@@ -10,8 +10,8 @@ const NavBar = ({ currentUser, loggedIn }) => {
         <div className="NavBar">
           {loggedIn ? <Logout /> : null }
           { loggedIn ? <><p id="loggedin"> Logged in as { currentUser.attributes.username }</p></> : null }           
-          <NavLink exact activeClass to="/topics">My Topics</NavLink>            
-          <NavLink exact activeClass to="/topics/new">Create a New Topic</NavLink> 
+          <NavLink exact activeclass="true" to="/topics">My Topics</NavLink>            
+          <NavLink exact activeclass="true" to="/topics/new">Create a New Topic</NavLink> 
     
         </div>
     )
