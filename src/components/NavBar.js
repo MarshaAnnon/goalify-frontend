@@ -1,15 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import Logout from './Logout'
 
 
-
-
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser, loggedIn }) => {
     
     return (
         <div className="NavBar">
-            { currentUser ? `Welcome, ${ currentUser.attributes.username }, check out your topics to complete, add, edit or delete goals!` : "" }
-            
+          {loggedIn ? <Logout /> : null }
+          { loggedIn ? <><p id="loggedin"> Logged in as { currentUser.attributes.username }</p></> : null }           
+          <NavLink exact activeClass to="/topics">My Topics</NavLink>            
+          <NavLink exact activeClass to="/topics/new">Create a New Topic</NavLink> 
+    
         </div>
     )
 }
@@ -19,7 +22,9 @@ const NavBar = ({ currentUser }) => {
 
 const mapStateToProps = ({ currentUser }) => {
     return {
-      currentUser
+      currentUser,
+      loggedIn: !!currentUser
+
     }
   }
 
