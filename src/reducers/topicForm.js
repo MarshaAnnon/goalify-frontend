@@ -12,6 +12,8 @@ const initialState = {
         return returnVal
       case "RESET_TOPIC_FORM":
         return initialState
+      case "SET_FORM_DATA_FOR_EDIT":
+        return action.topicFormData
       default:
         return state
     }
