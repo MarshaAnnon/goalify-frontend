@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateLoginForm } from '../actions/loginForm.js'
-import { login } from '../actions/currentUser.js'
+import { updateLoginForm } from '../actions/loginForm'
+import { login } from '../actions/currentUser'
 
 
-const Login = ({ loginFormData, updateLoginForm, login }) => {
+const Login = ({ loginFormData, updateLoginForm, login, history }) => {
     const handleInputChange = event => {
         const { name, value } = event.target
         const updatedFormInfo = {
@@ -16,7 +16,7 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        login(loginFormData)
+        login(loginFormData, history)
     }
     return (
         <form onSubmit={handleSubmit} >
