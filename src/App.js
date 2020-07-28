@@ -1,14 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Route, withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import { getCurrentUser } from './actions/currentUser'
+import { setFormDataForEdit } from './actions/topicForm'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Signup from './components/Signup'
 import Login from './components/Login'
-import Logout from './components/Logout'
 import Topics from './components/Topics'
-import NewTopicForm from './components/NewTopicForm'
+import TopicCard from './components/TopicCard'
+import NewTopicFormWrapper from './components/NewTopicFormWrapper'
+import EditTopicFormWrapper from './components/EditTopicFormWrapper'
+
 import './App.css';
 
 class App extends React.Component {
@@ -18,17 +21,28 @@ class App extends React.Component {
   }
 
   render (){
-    const { loggedIn } = this.props
+    const { loggedIn, topics} = this.props
     return (
       <div className="App">
-        <NavBar />
-          {loggedIn ? <Logout /> : null }
+        { loggedIn ? <NavBar location={this.props.location} /> : null }
+        <Switch>
           <Route exact path='/' render={() => loggedIn ? <Topics /> : <Home />} />
           <Route exact path='/login' component={ Login } />
           <Route exact path='/signup' component={ Signup } />
           <Route exact path='/topics' component={ Topics } />
-          <Route exact path='/topics/new' component={ NewTopicForm } />
+          <Route exact path='/topics/new' component={ NewTopicFormWrapper } />
+          <Route exact path='/topics/:id' render={ props => {
+            const topic = topics.find(topic => topic.id === props.match.params.id)
+            console.log(topic)
+            return <TopicCard topic={topic}{...props} />
+          }} />
+          <Route exact path='/topics/:id/edit' render={ props => {
+            const topic = topics.find(topic => topic.id === props.match.params.id)
+            
+            return <EditTopicFormWrapper topic={topic}{...props} />
+          }} />
           {/* <Route exact path='/goals/new' component={ NewGoal } /> */}
+        </Switch>
       </div>
     );
   }
@@ -36,9 +50,10 @@ class App extends React.Component {
   
 const mapStateToProps = state => {
   return {
-    loggedIn: !!state.currentUser  
+    loggedIn: !!state.currentUser,
+    topics: state.topics  
   }
 }
   
 
-export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
+export default withRouter(connect(mapStateToProps, { getCurrentUser, setFormDataForEdit })(App));
