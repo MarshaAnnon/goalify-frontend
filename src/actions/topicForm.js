@@ -12,3 +12,13 @@ export const updateTopicForm = (name, value) => {
       type: "RESET_TOPIC_FORM",
     }
   }
+
+  export const setFormDataForEdit = topics => {
+    const topicFormData = {
+      name: topics.attributes.name
+    }
+    return {
+      type: "SET_FORM_DATA_FOR_EDIT",
+      topicFormData
+    }
+  }
