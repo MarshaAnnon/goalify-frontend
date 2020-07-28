@@ -1,10 +1,17 @@
 import React from 'react'
-import TopicCard from './TopicCard.js'
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 
 const Topics = props => {
-    const topicCards = props.topics.length > 0 ? props.topics.map(t => <TopicCard topic={t} key={t.id} />) : []
+    const topicCards = props.topics.length > 0 ?
+     props.topics.map(t => (
+        <p key={t.id}>
+            <Link to={`/topics/${t.id}`}> 
+                {t.attributes.name} 
+            </Link>
+        </p>
+        )) 
+        : null
     return (
          topicCards 
     )
