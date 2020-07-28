@@ -1,3 +1,5 @@
+import { resetTopicForm } from './topicForm'
+
 //synchronous action creators
 export const setTopics = topics => {
     return {
@@ -12,10 +14,17 @@ export const clearTopics = () => {
     }
 }
 
-export const addTopic = () => {
+export const addTopic = topic => {
     return {
         type: "ADD_TOPIC",
-        // topic
+        topic
+    }
+}
+
+export const updateTopicSuccess = topic => {
+    return {
+        type: "UPDATE_TOPIC",
+        topic
     }
 }
 
@@ -42,7 +51,7 @@ export const getTopics = () => {
     }
 }
 
-export const createTopic = topicData => {
+export const createTopic = (topicData, history) => {
     return dispatch => {
         const sendableTripData = {
             name: topicData.name,
@@ -58,11 +67,42 @@ export const createTopic = topicData => {
         })
         .then(resp => resp.json())
         .then(resp => {
+            dispatch(addTopic(resp.data))
+            dispatch(resetTopicForm())
+            history.push(`/topics/${resp.data.id}`)
             if (resp.error) {
                 alert(resp.error)
             } else {
                 console.log(resp.data)
-                dispatch(addTopic(resp.data))
+            }
+        })
+        .catch(console.log)
+    }
+}
+
+export const updateTopic = (topicData, history) => {
+    return dispatch => {
+        const sendableTripData = {
+            name: topicData.name,
+            user_id: topicData.userId
+        }
+        return fetch(`http://localhost:3000/api/v1/topics/${topicData.topicId}`, {
+            credentials: "include",
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"   
+            },
+            body: JSON.stringify(sendableTripData)
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            dispatch(updateTopicSuccess(resp.data))
+            dispatch(resetTopicForm())
+            history.push(`/topics/${resp.data.id}`)
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                console.log(resp.data)
             }
         })
         .catch(console.log)
