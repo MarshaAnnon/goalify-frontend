@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { getCurrentUser } from './actions/currentUser.js'
-import NavBar from './components/NavBar.js'
+import { Route, Switch, withRouter } from 'react-router-dom'
+import { getCurrentUser } from './actions/currentUser'
+import NavBar from './components/NavBar'
+import Home from './components/Home'
+import Signup from './components/Signup'
+import Login from './components/Login'
+import Logout from './components/Logout'
+import Topics from './components/Topics'
+import NewTopicForm from './components/NewTopicForm'
 import MainContainer from './components/MainContainer.js'
 import './App.css';
 
@@ -12,16 +19,27 @@ class App extends React.Component {
   }
 
   render (){
+    const { loggedIn } = this.props
     return (
       <div className="App">
         <NavBar />
-        <MainContainer />
+          {loggedIn ? <Logout /> : null }
+          <Route exact path='/' render={() => loggedIn ? <Topics /> : <Home />} />
+          <Route exact path='/login' component={ Login } />
+          <Route exact path='/signup' component={ Signup } />
+          <Route exact path='/topics' component={ Topics } />
+          <Route exact path='/topics/new' component={ NewTopicForm } />
+          {/* <Route exact path='/goals/new' component={ NewGoal } /> */}
       </div>
-      
     );
   }
 }
   
+const mapStateToProps = state => {
+  return {
+    loggedIn: !!state.currentUser  
+  }
+}
   
 
-export default connect(null, { getCurrentUser })(App);
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
