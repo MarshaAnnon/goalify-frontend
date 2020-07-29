@@ -5,8 +5,8 @@ import TopicForm from './TopicForm';
 
 const NewTopicFormWrapper = ({ history, createTopic }) => {
 
-    const handleSubmit = (event, topicFormData, history, userId) => { 
-        event.preventDefault()
+    const handleSubmit = (topicFormData, userId) => { 
+        
         createTopic({
             ...topicFormData,
             userId,
