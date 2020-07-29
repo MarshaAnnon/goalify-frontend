@@ -8,6 +8,7 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import Topics from './components/Topics'
 import TopicCard from './components/TopicCard'
+import GoalCard from './components/GoalCard'
 import NewTopicFormWrapper from './components/NewTopicFormWrapper'
 import EditTopicFormWrapper from './components/EditTopicFormWrapper'
 
@@ -35,10 +36,18 @@ class App extends React.Component {
             console.log(topic)
             return <TopicCard topic={topic}{...props} />
           }} />
-          <Route exact path='/topics/:id/edit' render={ props => {
+          <Route exact path='/topics/:id/edit' 
+          render={ props => {
             const topic = topics.find(topic => topic.id === props.match.params.id)
-            
             return <EditTopicFormWrapper topic={topic}{...props} />
+          }} />
+          
+          <Route exact path='/topics/:topicId/goals/:id' 
+            render={ props => {
+              debugger
+            const topic = topics.find(topic => topic.id === props.match.params.topicId)
+            const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
+            return <GoalCard goal={goal}{...props} topic={topic.attributes.name}/>
           }} />
           {/* <Route exact path='/goals/new' component={ NewGoal } /> */}
         </Switch>
