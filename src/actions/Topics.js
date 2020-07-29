@@ -21,6 +21,13 @@ export const addTopic = topic => {
     }
 }
 
+export const deleteTopicSuccess = topicId => {
+    return {
+        type: "DELETE_TOPIC",
+        topicId
+    }
+}
+
 export const updateTopicSuccess = topic => {
     return {
         type: "UPDATE_TOPIC",
@@ -83,8 +90,7 @@ export const createTopic = (topicData, history) => {
 export const updateTopic = (topicData, history) => {
     return dispatch => {
         const sendableTripData = {
-            name: topicData.name,
-            user_id: topicData.userId
+            name: topicData.name
         }
         return fetch(`http://localhost:3000/api/v1/topics/${topicData.topicId}`, {
             credentials: "include",
@@ -96,13 +102,33 @@ export const updateTopic = (topicData, history) => {
         })
         .then(resp => resp.json())
         .then(resp => {
-            dispatch(updateTopicSuccess(resp.data))
-            dispatch(resetTopicForm())
-            history.push(`/topics/${resp.data.id}`)
             if (resp.error) {
                 alert(resp.error)
             } else {
-                console.log(resp.data)
+                dispatch(updateTopicSuccess(resp.data))
+                history.push(`/topics/${resp.data.id}`)
+            }
+        })
+        .catch(console.log)
+    }
+}
+
+export const deleteTopic = (topicId, history) => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/api/v1/topics/${topicId}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"   
+            }
+        })
+            .then(resp => resp.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(deleteTopicSuccess(topicId))
+                history.push("/topics")
             }
         })
         .catch(console.log)
