@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { getCurrentUser } from './actions/currentUser'
-import { setFormDataForEdit } from './actions/topicForm'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Signup from './components/Signup'
@@ -56,4 +55,4 @@ const mapStateToProps = state => {
 }
   
 
-export default withRouter(connect(mapStateToProps, { getCurrentUser, setFormDataForEdit })(App));
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
