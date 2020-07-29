@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
 import topics from './reducers/topics'
+import goals from './reducers/goals'
 import signupForm from './reducers/signupForm'
 import topicForm from './reducers/topicForm'
 
@@ -11,7 +12,8 @@ const reducer = combineReducers({
   loginForm,
   topics,
   signupForm,
-  topicForm
+  topicForm,
+  goals
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
