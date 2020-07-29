@@ -8,7 +8,6 @@ const TopicForm = ({
     updateTopicForm, 
     topicFormData,  
     userId,
-    history, 
     handleSubmit,
     editMode
     }) => {
@@ -23,7 +22,8 @@ const TopicForm = ({
 
     return (
         <form onSubmit={event => {
-            handleSubmit(event, topicFormData, history, userId)
+            event.preventDefault()
+            handleSubmit(topicFormData)
         }}>
             <input 
                 type="text"
