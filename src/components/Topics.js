@@ -7,7 +7,8 @@ const Topics = props => {
      props.topics.map(t => (
         <p key={t.id}>
             <Link to={`/topics/${t.id}`}> 
-                {t.attributes.name} 
+                {t.attributes.name}
+                {/* {t.attributes.name.goals}  */}
             </Link>
         </p>
         )) 
