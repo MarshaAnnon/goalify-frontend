@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-
 const GoalCard = ({ goal, topic}) => {
     return (
         <div>
