@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Goals from './Goals'
+import GoalForm from './GoalForm'
 
 
 const TopicCard = ({ topic }) => {
@@ -12,7 +13,9 @@ const TopicCard = ({ topic }) => {
             <Link to={`/topics/${topic.id}/edit`}>Edit this Topic</Link>
         </div>
         : null}
+        
         <Goals goals={topic.attributes.goals} topicId={topic.id} />
+        <GoalForm topicId={topic.id} />
         </div>
     )
 }
