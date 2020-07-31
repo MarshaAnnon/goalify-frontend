@@ -31,23 +31,37 @@ class App extends React.Component {
           <Route exact path='/signup' component={ Signup } />
           <Route exact path='/topics' component={ Topics } />
           <Route exact path='/topics/new' component={ NewTopicFormWrapper } />
-          <Route exact path='/topics/:id' render={ props => {
+
+          <Route 
+            exact path='/topics/:id' 
+            render={ props => {
             const topic = topics.find(topic => topic.id === props.match.params.id)
-            console.log(topic)
             return <TopicCard topic={topic}{...props} />
           }} />
-          <Route exact path='/topics/:id/edit' 
-          render={ props => {
+
+          <Route 
+            exact path='/topics/:id/edit' 
+            render={ props => {
             const topic = topics.find(topic => topic.id === props.match.params.id)
             return <EditTopicFormWrapper topic={topic}{...props} />
           }} />
-          
-          <Route exact path='/topics/:topicId/goals/:id' 
+        
+        <Route 
+            exact path='/topics/:topicId/goals/:id' 
             render={ props => {
             const topic = topics.find(topic => topic.id === props.match.params.topicId)
             const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
             return <GoalCard goal={goal}{...props} topic={topic.attributes.name}/>
           }} />
+
+          {/* <Route exact path='/topics/:topicId/goals/:id/edit' 
+            render={ props => {
+            const topic = topics.find(topic => topic.id === props.match.params.topicId)
+            const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
+            return <></>
+          }} /> */}
+
+          
           {/* <Route exact path='/goals/new' component={ NewGoal } /> */}
         </Switch>
       </div>
