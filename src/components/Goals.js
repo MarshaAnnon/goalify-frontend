@@ -15,8 +15,4 @@ const Goals = ({ goals, topicId }) => {
     return goalCards 
 }
 
-export default Goals;   
-
-
-    
-    
+export default Goals;
