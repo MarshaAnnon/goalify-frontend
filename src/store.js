@@ -2,10 +2,11 @@ import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
-import topics from './reducers/topics'
-import goals from './reducers/goals'
 import signupForm from './reducers/signupForm'
 import topicForm from './reducers/topicForm'
+import topics from './reducers/topics'
+import goalForm from './reducers/goalForm'
+
 
 const reducer = combineReducers({
   currentUser,
@@ -13,7 +14,7 @@ const reducer = combineReducers({
   topics,
   signupForm,
   topicForm,
-  goals
+  goalForm
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
