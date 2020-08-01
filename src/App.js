@@ -13,6 +13,7 @@ import NewTopicFormWrapper from './components/topics/NewTopicFormWrapper'
 import EditTopicFormWrapper from './components/topics/EditTopicFormWrapper'
 
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   
