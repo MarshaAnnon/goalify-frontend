@@ -24,7 +24,7 @@ class App extends React.Component {
     const { loggedIn, topics} = this.props
     return (
       <div className="App">
-        { loggedIn ? <NavBar location={this.props.location} /> : null }
+        {/* { loggedIn ? <NavBar location={this.props.location} /> : null } */}
         <Switch>
           <Route exact path='/' render={() => loggedIn ? <Topics /> : <Home />} />
           <Route exact path='/login' component={ Login } />
@@ -46,12 +46,13 @@ class App extends React.Component {
             return <EditTopicFormWrapper topic={topic}{...props} />
           }} />
         
-        <Route 
-            exact path='/topics/:topicId/goals/:id' 
-            render={ props => {
+          <Route 
+            exact path='/topics/:topicId/goals/:id'
+            render={ props => { 
             const topic = topics.find(topic => topic.id === props.match.params.topicId)
             const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
-            return <GoalCard goal={goal}{...props} topic={topic.attributes.name}/>
+            return <GoalCard goal={goal}{...props} topic={topic}/>
+           
           }} />
 
           {/* <Route exact path='/topics/:topicId/goals/:id/edit' 
@@ -60,9 +61,6 @@ class App extends React.Component {
             const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
             return <></>
           }} /> */}
-
-          
-          {/* <Route exact path='/goals/new' component={ NewGoal } /> */}
         </Switch>
       </div>
     );
