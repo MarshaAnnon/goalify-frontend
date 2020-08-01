@@ -6,7 +6,6 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Signup from './components/auth/Signup'
 import Login from './components/auth/Login'
-import Logout from './components/auth/Logout'
 import Topics from './components/topics/Topics'
 import TopicCard from './components/topics/TopicCard'
 import GoalCard from './components/goals/GoalCard'
@@ -30,7 +29,6 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={() => loggedIn ? <Topics /> : <Home />} />
           <Route exact path='/login' component={ Login } />
-          <Route exact path='/logout' component={ Logout } />
           <Route exact path='/signup' component={ Signup } />
           <Route exact path='/topics' component={ Topics } />
           <Route exact path='/topics/new' component={ NewTopicFormWrapper } />
