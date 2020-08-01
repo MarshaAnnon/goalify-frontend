@@ -1,8 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { updateSignupForm } from '../../actions/signupForm'
-import { signup } from '../../actions/currentUser'
-
+import React from 'react';
+import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { updateSignupForm } from '../../actions/signupForm';
+import { signup } from '../../actions/currentUser';
 
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     const handleInputChange = event => {
@@ -20,12 +22,42 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     }
     
     return (
-        <form onSubmit={handleSubmit} >
-            <input type="text" name="username" placeholder="Username" value={signupFormData.username} onChange={handleInputChange} />
-            <input type="text" name="email" placeholder="Email" value={signupFormData.email} onChange={handleInputChange} />
-            <input type="text" name="password" value={signupFormData.password} placeholder="Password" onChange={handleInputChange} />
-            <input type="submit" value="Sign Up" />
-        </form>
+        <Container className="form-container">
+            <h5><strong>Sign Up</strong></h5>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Control 
+                        type="text" 
+                        name="username" 
+                        placeholder="Username" 
+                        value={signupFormData.username} 
+                        onChange={handleInputChange} 
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control 
+                    type="text" 
+                    name="email" 
+                    placeholder="Email" 
+                    value={signupFormData.email} 
+                    onChange={handleInputChange} 
+                />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control 
+                        type="text" 
+                        name="password" 
+                        value={signupFormData.password} 
+                        placeholder="Password" 
+                        onChange={handleInputChange} 
+                    />
+                </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Sign Up
+                    </Button>
+            </Form>
+        </Container>
+        
     )
 }
 

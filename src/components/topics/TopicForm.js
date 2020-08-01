@@ -1,7 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 //1. grab the action creator
-import { updateTopicForm } from '../../actions/topicForm'
+import { updateTopicForm } from '../../actions/topicForm';
 
 //3. Redux gives back a prop called updateTopicForm which when invoked Redux will dispatch
 const TopicForm = ({ 
@@ -21,22 +24,31 @@ const TopicForm = ({
     }
 
     return (
-        <form onSubmit={event => {
-            event.preventDefault()
-            handleSubmit(topicFormData)
-        }}>
-            <input 
-                type="text"
-                name="name" 
-                value={topicFormData.name}
-                onChange={handleChange} 
-                placeholder="Topic Name" 
-        />
-            <input
-                type="submit"
-                value={editMode ? "Update Topic" : "Create Topic" }
-            />
-        </form>
+        <Container className="form-container">
+            <h5><strong>Create a New Topic</strong></h5>
+            <Form 
+                onSubmit={event => {
+                    event.preventDefault()
+                    handleSubmit(topicFormData)
+                }}
+            >
+                <Form.Group>
+                    <Form.Control 
+                    type="text" 
+                    name="name" 
+                    value={topicFormData.name}
+                    onChange={handleChange} 
+                    placeholder="Topic Name" 
+                />
+                </Form.Group>
+                    <Button 
+                        variant="primary" 
+                        type="submit" 
+                        value={editMode ? "Update Topic" : "Create Topic" }
+                    > Submit
+                    </Button>
+            </Form>
+        </Container>
     );
 };
 

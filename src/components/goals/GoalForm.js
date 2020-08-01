@@ -1,7 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 //1. grab the action creator
-import { updateGoalForm } from '../../actions/goalForm'
+import { updateGoalForm } from '../../actions/goalForm';
 import { createGoal } from '../../actions/goals';
 
 //3. Redux gives back a prop called updateTopicForm which when invoked Redux will dispatch
@@ -24,39 +27,43 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
     }
 
     return (
-        <form onSubmit={handleSubmit} >
-            <input 
-                type="text"
-                name="goalName" 
-                value={goalFormData.name}
-                onChange={handleChange} 
-                placeholder="Goal Name" 
-            />
-            <br/>
-            <br/>
-            <input 
-                type="text"
-                name="goalDescription" 
-                value={goalFormData.description}
-                onChange={handleChange} 
-                placeholder="Goal Description" 
-            />
-            <br/>
-            <br/>
-            <input 
-                type="text"
-                name="goalTimeline"
-                value={goalFormData.timeline}
-                onChange={handleChange} 
-                placeholder="Goal Timeline" 
-            />
-            <br/>
-            <br/>
-            <input
-                type="submit"
-                value={ "Create Goal" }
-            />
-        </form>
+        <Container className="form-container">
+            <h5><strong>Create a New Goal</strong></h5>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Control
+                        type="text" 
+                        name="goalName" 
+                        value={goalFormData.name}
+                        placeholder="Enter Goal Name"
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control 
+                        as="textarea" 
+                        rows="5" 
+                        type="text" 
+                        name="goalDescription" 
+                        value={goalFormData.description}   
+                        placeholder="Enter Goal Description" 
+                        onChange={handleChange} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control 
+                        type="text" 
+                        name="goalTimeline" 
+                        value={goalFormData.timeline}  
+                        placeholder="Goal Timeline" 
+                        onChange={handleChange} 
+                />
+                </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+            </Form>
+        </Container>
+        
     );
 };
 
