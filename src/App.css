@@ -40,4 +40,15 @@
 .NavBar {
   display: flex;
   flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+a.active {
+  color: orchid;
+}
+
+#loggedin {
+  font-size: 1em;
+  color: orchid;
 }

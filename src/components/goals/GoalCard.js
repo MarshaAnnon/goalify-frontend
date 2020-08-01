@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { deleteGoal } from '../actions/goals'
+import { deleteGoal } from '../../actions/goals'
 
 const GoalCard = ({ goal, topic, history, deleteGoal }) => {
     return (

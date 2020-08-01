@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { updateTopic, deleteTopic } from '../actions/topics'
-import { setFormDataForEdit, resetTopicForm } from '../actions/topicForm'
+import { updateTopic, deleteTopic } from '../../actions/topics'
+import { setFormDataForEdit, resetTopicForm } from '../../actions/topicForm'
 import TopicForm from './TopicForm';
 
 class EditTopicFormWrapper extends React.Component {

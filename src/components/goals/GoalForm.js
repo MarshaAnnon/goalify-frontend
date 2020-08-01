@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 //1. grab the action creator
-import { updateGoalForm } from '../actions/goalForm'
-import { createGoal } from '../actions/goals';
+import { updateGoalForm } from '../../actions/goalForm'
+import { createGoal } from '../../actions/goals';
 
 //3. Redux gives back a prop called updateTopicForm which when invoked Redux will dispatch
 const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }) => {

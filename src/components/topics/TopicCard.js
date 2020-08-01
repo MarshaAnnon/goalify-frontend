@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Goals from './Goals'
-import GoalForm from './GoalForm'
+import Goals from '../goals/Goals'
+import GoalForm from '../goals/GoalForm'
 
 
 const TopicCard = ({ topic }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { createTopic } from '../actions/topics'
+import { createTopic } from '../../actions/topics'
 import TopicForm from './TopicForm';
 
 const NewTopicFormWrapper = ({ history, createTopic }) => {

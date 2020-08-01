@@ -4,13 +4,13 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { getCurrentUser } from './actions/currentUser'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
-import Signup from './components/Signup'
-import Login from './components/Login'
-import Topics from './components/Topics'
-import TopicCard from './components/TopicCard'
-import GoalCard from './components/GoalCard'
-import NewTopicFormWrapper from './components/NewTopicFormWrapper'
-import EditTopicFormWrapper from './components/EditTopicFormWrapper'
+import Signup from './components/auth/Signup'
+import Login from './components/auth/Login'
+import Topics from './components/topics/Topics'
+import TopicCard from './components/topics/TopicCard'
+import GoalCard from './components/goals/GoalCard'
+import NewTopicFormWrapper from './components/topics/NewTopicFormWrapper'
+import EditTopicFormWrapper from './components/topics/EditTopicFormWrapper'
 
 import './App.css';
 
@@ -24,7 +24,7 @@ class App extends React.Component {
     const { loggedIn, topics} = this.props
     return (
       <div className="App">
-        {/* { loggedIn ? <NavBar location={this.props.location} /> : null } */}
+        { loggedIn ? <NavBar location={this.props.location} /> : null }
         <Switch>
           <Route exact path='/' render={() => loggedIn ? <Topics /> : <Home />} />
           <Route exact path='/login' component={ Login } />
