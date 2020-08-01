@@ -1,7 +1,6 @@
 import { resetGoalForm } from './goalForm'
 import { getTopics } from './topics'
 //synchronous action creators
-
 export const clearGoals = () => {
     return {
         type: "CLEAR_GOALS",
@@ -31,8 +30,8 @@ export const createGoal = (goalData, history) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                dispatch(getTopics())
                 dispatch(resetGoalForm())
+                dispatch(getTopics())
                 history.push(`/topics/${goalData.topicId}/goals/${resp.data.id}`)
             }
         })  
@@ -40,24 +39,24 @@ export const createGoal = (goalData, history) => {
     }
 }
 
-// export const deleteGoal = (goalId, history) => {
-//     return dispatch => {
-//         return fetch(`http://localhost:3000/api/v1/goals/${goalId}`, {
-//             credentials: "include",
-//             method: "DELETE",
-//             headers: {
-//                 "Content-Type": "application/json"   
-//             }
-//         })
-//             .then(resp => resp.json())
-//             .then(resp => {
-//             if (resp.error) {
-//                 alert(resp.error)
-//             } else {
-//                 dispatch(deleteGoalSuccess(goalId))
-//                 history.push("/topics")
-//             }
-//         })
-//         .catch(console.log)
-//     }
-// }
+export const deleteGoal = (goalId, topicId, history) => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/api/v1/goals/${goalId}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"   
+            }
+        })
+            .then(resp => resp.json())
+            .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(getTopics())
+                history.push(`/topics/${topicId}`)
+            }
+        })
+        .catch(console.log)
+    }
+}
