@@ -9,4 +9,7 @@
 //     )
 // }
 
+{/* { loggedIn ? <><p id="loggedin"> Logged in as { currentUser.attributes.username }</p></> : null } */}
+{/* {loggedIn ? <Logout /> : null } */}
+
 // export default MainContainer
