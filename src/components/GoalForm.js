@@ -6,8 +6,6 @@ import { createGoal } from '../actions/goals';
 
 //3. Redux gives back a prop called updateTopicForm which when invoked Redux will dispatch
 const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }) => {
-
-    // const { goalName, goalDescription, goalTimeline } = goalFormData
     
     const handleChange = event => {
         const { name, value } = event.target
@@ -18,7 +16,6 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
     }
 
     const handleSubmit = event => {
-        debugger
         event.preventDefault()
         createGoal({
             ...goalFormData,
@@ -32,7 +29,6 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
                 type="text"
                 name="goalName" 
                 value={goalFormData.name}
-                // value={goalFormData.name}
                 onChange={handleChange} 
                 placeholder="Goal Name" 
             />
@@ -42,7 +38,6 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
                 type="text"
                 name="goalDescription" 
                 value={goalFormData.description}
-                // value={goalFormData.description}
                 onChange={handleChange} 
                 placeholder="Goal Description" 
             />
@@ -52,7 +47,6 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
                 type="text"
                 name="goalTimeline"
                 value={goalFormData.timeline}
-                // value={goalFormData.timeline}
                 onChange={handleChange} 
                 placeholder="Goal Timeline" 
             />
@@ -67,7 +61,6 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
 };
 
 const mapStateToProps = state => {
-
     return {
         goalFormData: state.goalForm
         
