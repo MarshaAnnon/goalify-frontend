@@ -1,18 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { deleteGoal } from '../actions/goals'
 
-const GoalCard = ({ goal, topic}) => {
+const GoalCard = ({ goal, topic, history, deleteGoal }) => {
     return (
         <div>
-            <h2>{ topic }</h2>
+            <h2>{ topic.attributes.name }</h2>
             <h4>Goal Name: { goal.goal_name }</h4>
             <p>Goal Description: { goal.goal_description }</p> 
             <h5>Goal Timeline: { goal.goal_timeline }</h5> 
-            <Link
-                to={`/topics/${goal.topic_id}/goals/${goal.id}/edit`} > Edit Goal
-            </Link>
+            <button style={{color: "red" }} onClick={() => deleteGoal(goal.id, topic.id, history)}>Delete this goal</button>
         </div>
     );
 };
 
-export default GoalCard;
+export default connect(null, { deleteGoal })(GoalCard);
