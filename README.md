@@ -1,3 +1,4 @@
+
 Goalify is a web application where a user create goals within different topics/areas of life. The front-end is built on React & Redux and utilizing a Rails back-end API.
 
 Installing
