@@ -50,11 +50,9 @@ export const getTopics = () => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-                console.log(resp.data)
                 dispatch(setTopics(resp.data))
             }
         })
-        .catch(console.log)
     }
 }
 
@@ -79,11 +77,8 @@ export const createTopic = (topicData, history) => {
             history.push(`/topics/${resp.data.id}`)
             if (resp.error) {
                 alert(resp.error)
-            } else {
-                console.log(resp.data)
             }
         })
-        .catch(console.log)
     }
 }
 
@@ -109,7 +104,6 @@ export const updateTopic = (topicData, history) => {
                 history.push(`/topics/${resp.data.id}`)
             }
         })
-        .catch(console.log)
     }
 }
 
@@ -131,6 +125,5 @@ export const deleteTopic = (topicId, history) => {
                 history.push("/topics")
             }
         })
-        .catch(console.log)
     }
 }
