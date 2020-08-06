@@ -53,15 +53,7 @@ class App extends React.Component {
             const topic = topics.find(topic => topic.id === props.match.params.topicId)
             const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
             return <GoalCard goal={goal}{...props} topic={topic}/>
-           
           }} />
-
-          {/* <Route exact path='/topics/:topicId/goals/:id/edit' 
-            render={ props => {
-            const topic = topics.find(topic => topic.id === props.match.params.topicId)
-            const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
-            return <></>
-          }} /> */}
         </Switch>
       </div>
     );
@@ -75,5 +67,4 @@ const mapStateToProps = state => {
   }
 }
   
-
 export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
