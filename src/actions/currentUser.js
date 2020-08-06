@@ -37,7 +37,6 @@ export const login = (credentials, history) => {
                 history.push('/')
             }
         })
-        .catch(console.log)
     }
 }
 
@@ -76,12 +75,10 @@ export const signup = (credentials, history) => {
                 history.push('/')
             }
         })
-        .catch(console.log)
     }
 }
 
 export const getCurrentUser = () => {
-    console.log("DISPATCHING GET CURRENT USER")
     return dispatch => {
         return fetch("http://localhost:3000/api/v1/get_current_user", {
             credentials: "include",
@@ -99,7 +96,6 @@ export const getCurrentUser = () => {
                 dispatch(getTopics())
             }
         })
-        .catch(console.log)
     }
 }
 
