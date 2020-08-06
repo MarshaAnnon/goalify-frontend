@@ -16,7 +16,6 @@ export const createGoal = (goalData, history) => {
             goal_timeline: goalData.goalTimeline,
             topic_id: goalData.topicId
         }
-        
         return fetch("http://localhost:3000/api/v1/goals", {
             credentials: "include",
             method: "POST",
@@ -35,7 +34,6 @@ export const createGoal = (goalData, history) => {
                 history.push(`/topics/${goalData.topicId}/goals/${resp.data.id}`)
             }
         })  
-        .catch(console.log)
     }
 }
 
@@ -57,6 +55,5 @@ export const deleteGoal = (goalId, topicId, history) => {
                 history.push(`/topics/${topicId}`)
             }
         })
-        .catch(console.log)
     }
 }
