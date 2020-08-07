@@ -6,8 +6,6 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-
-
 const Login = ({ loginFormData, updateLoginForm, login, history }) => {
     const handleInputChange = event => {
         const { name, value } = event.target
