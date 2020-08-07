@@ -57,7 +57,6 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
                     </Button>
             </Form>
         </Container>
-        
     )
 }
 
