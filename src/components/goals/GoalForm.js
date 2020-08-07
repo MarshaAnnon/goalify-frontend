@@ -3,19 +3,14 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-//1. grab the action creator
 import { updateGoalForm } from '../../actions/goalForm';
 import { createGoal } from '../../actions/goals';
 
-//3. Redux gives back a prop called updateTopicForm which when invoked Redux will dispatch
 const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }) => {
     
     const handleChange = event => {
         const { name, value } = event.target
         updateGoalForm(name, value)
-        //4. this is not an invocation of just the action creator
-        // it's now redux dispatching the action by the action creator
-        // with the appropriate arguments - VIDEO 9 GIVES AWESOME RUN THROUGH
     }
 
     const handleSubmit = event => {
@@ -74,6 +69,4 @@ const mapStateToProps = state => {
     }
 }
 
-//2. pass the action creator to redux's connect function using mapDispatchToProps or the
-// shorthand object syntax 
 export default connect(mapStateToProps, { updateGoalForm, createGoal })(GoalForm);
