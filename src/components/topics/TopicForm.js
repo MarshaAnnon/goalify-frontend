@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-//1. grab the action creator
 import { updateTopicForm } from '../../actions/topicForm';
 
-//3. Redux gives back a prop called updateTopicForm which when invoked Redux will dispatch
 const TopicForm = ({ 
     updateTopicForm, 
     topicFormData,  
-    userId,
     handleSubmit,
     editMode
     }) => {
@@ -18,14 +15,10 @@ const TopicForm = ({
     const handleChange = event => {
         const { name, value } = event.target
         updateTopicForm(name, value)
-        //4. this is not an invocation of just the action creator
-        // it's now redux dispatching the action by the action creator
-        // with the appropriate arguments - VIDEO 9 GIVES AWESOME RUN THROUGH
     }
 
     return (
         <Container className="form-container">
-            <h5><strong>Create a New Topic</strong></h5>
             <Form 
                 onSubmit={event => {
                     event.preventDefault()
@@ -59,6 +52,5 @@ const mapStateToProps = state => {
         userId
     }
 }
-//2. pass the action creator to redux's connect function using mapDispatchToProps or the
-// shorthand object syntax 
+
 export default connect(mapStateToProps, { updateTopicForm })(TopicForm);
