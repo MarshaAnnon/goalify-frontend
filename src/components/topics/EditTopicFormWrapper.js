@@ -31,6 +31,7 @@ class EditTopicFormWrapper extends React.Component {
         const topicId = topic ? topic.id : null
         return (
             <>
+                <h5><strong>Edit Topic</strong></h5>
                 <TopicForm editMode handleSubmit={this.handleSubmit} />
                 <br />
                 <button style={{color: "red" }} onClick={() => deleteTopic(topicId, history)}>Delete this topic</button>
@@ -39,5 +40,5 @@ class EditTopicFormWrapper extends React.Component {
     }
 };
 
-
 export default connect(null, { updateTopic, setFormDataForEdit, resetTopicForm, deleteTopic })(EditTopicFormWrapper);
+
