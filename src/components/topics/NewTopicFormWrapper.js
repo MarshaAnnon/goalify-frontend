@@ -13,9 +13,11 @@ const NewTopicFormWrapper = ({ history, createTopic }) => {
         }, history)
     }
     return (
+        <>
+        <h5><strong>Create a New Topic</strong></h5>
         <TopicForm history={history} handleSubmit={handleSubmit} />
+        </>
     )
 };
-
 
 export default connect(null, { createTopic })(NewTopicFormWrapper);
