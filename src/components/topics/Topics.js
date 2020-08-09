@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import TopicsIncrementor from './TopicsIncrementor'
 
 const Topics = props => {
     const topicCards = props.topics.length > 0 ?
@@ -9,6 +10,7 @@ const Topics = props => {
                 <Link to={`/topics/${t.id}`}> 
                     {t.attributes.name}
                 </Link>
+                <TopicsIncrementor />
             </p>
             )) 
         : null
