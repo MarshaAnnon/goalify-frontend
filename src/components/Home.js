@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 
 const Home = () => (
     <div>
-       <h4>Welcome to Goalify. Please 
+       <h5>
            <Link to="/signup">Sign Up</Link> 
             or  
            <Link to="/login">Log In</Link>
-        </h4>
+        </h5>
+        <img src={require('../goalify-hero.png')} width="100%" />
     </div>
 );
 
