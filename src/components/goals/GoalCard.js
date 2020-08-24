@@ -1,15 +1,26 @@
 import React from 'react';
+import Badge from 'react-bootstrap/Badge'
 import { connect } from 'react-redux'
 import { deleteGoal } from '../../actions/goals'
 
 const GoalCard = ({ goal, topic, history, deleteGoal }) => {
     return (
         <div>
-            <h2>{ topic.attributes.name }</h2>
-            <h4>Goal Name: { goal.goal_name }</h4>
-            <p>Goal Description: { goal.goal_description }</p> 
-            <h5>Goal Timeline: { goal.goal_timeline }</h5> 
-            <button style={{color: "red" }} onClick={() => deleteGoal(goal.id, topic.id, history)}>Delete this goal</button>
+            <br />
+            <br />
+            <div className="goal-circle">
+                <h2>{ topic.attributes.name }</h2>
+                <br />
+                <h5>Goal Name:<p> { goal.goal_name }</p></h5>
+                <h5>Goal Description:<p> { goal.goal_description }</p></h5> 
+                <h5>Goal Timeline:<p> { goal.goal_timeline }</p></h5>
+                <br />
+                <br />
+                <br />
+                <div className="goal-button">
+                    <Badge variant="light" onClick={() => deleteGoal(goal.id, topic.id,  history)}>Delete this goal</Badge>
+                </div>
+            </div>
         </div>
     );
 };
