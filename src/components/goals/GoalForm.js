@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -14,6 +15,7 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
     }
 
     const handleSubmit = event => {
+        debugger
         event.preventDefault()
         createGoal({
             ...goalFormData,
@@ -69,4 +71,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { updateGoalForm, createGoal })(GoalForm);
+export default withRouter(connect(mapStateToProps, { updateGoalForm, createGoal })(GoalForm));
