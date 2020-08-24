@@ -1,17 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import TopicsIncrementor from './TopicsIncrementor'
 
 const Topics = props => {
     const topicCards = props.topics.length > 0 ?
         props.topics.map(t => (
-            <p key={t.id}>
-                <Link to={`/topics/${t.id}`}> 
-                    {t.attributes.name}
-                </Link>
-                <TopicsIncrementor />
-            </p>
+            <div className="topics-container">
+                <div className="topics">
+                    <p key={t.id}>
+                        <Link to={`/topics/${t.id}`}> 
+                            { t.attributes.name }
+                        </Link>
+                    </p>
+                </div>
+                <br />
+            </div>
             )) 
         : null
     return topicCards  
