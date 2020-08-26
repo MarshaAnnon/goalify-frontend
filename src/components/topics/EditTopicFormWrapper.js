@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux'
 import { updateTopic, deleteTopic } from '../../actions/topics'
 import { setFormDataForEdit, resetTopicForm } from '../../actions/topicForm'
@@ -31,10 +32,15 @@ class EditTopicFormWrapper extends React.Component {
         const topicId = topic ? topic.id : null
         return (
             <>
+                <br /><br />
                 <h5><strong>Edit Topic</strong></h5>
                 <TopicForm editMode handleSubmit={this.handleSubmit} />
                 <br />
-                <button style={{color: "red" }} onClick={() => deleteTopic(topicId, history)}>Delete this topic</button>
+                <Button 
+                    variant="primary" 
+                    onClick={() => deleteTopic(topicId, history)}
+                    > Delete this topic
+                </Button>
             </>
         )
     }

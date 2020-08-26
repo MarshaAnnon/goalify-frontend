@@ -14,7 +14,8 @@ const NewTopicFormWrapper = ({ history, createTopic }) => {
     }
     return (
         <>
-        <h5><strong>Create a New Topic</strong></h5>
+        <br /><br />
+        <h4><strong>Create a New Topic</strong></h4>
         <TopicForm history={history} handleSubmit={handleSubmit} />
         </>
     )
