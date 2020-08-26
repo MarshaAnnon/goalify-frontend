@@ -8,7 +8,7 @@ const Topics = props => {
             <div className="topics-container">
                 <div className="topics">
                     <p key={t.id}>
-                        <Link to={`/topics/${t.id}`}> 
+                        <Link className="link" to={`/topics/${t.id}`}> 
                             { t.attributes.name }
                         </Link>
                     </p>
