@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom'
 const Home = () => (
     <div>
        <h5>
-           <Link to="/signup">Sign Up</Link> 
-            or  
-           <Link to="/login">Log In</Link>
+           <br /> <br />
+           <Link className="home-link" to="/signup">Sign Up</Link> 
+            
+           <Link className="home-link" to="/login">Log In</Link>
         </h5>
-        <img src={require('../goalify-hero.png')} width="100%" />
+        <img src={require('../goalify-hero.png')} alt="Goalify target" width="100%" />
     </div>
 );
 
