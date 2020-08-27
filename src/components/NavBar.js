@@ -9,7 +9,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 const NavBar = ( {logout} ) => {
   return (
-  <Navbar sticky="top" expand="lg" variant="dark" bg="danger">
+  <Navbar sticky="top" expand="lg" variant="dark" bg="warning">
     <Container id='navbar-container'>
       <Navbar.Brand to="/">Goalify</Navbar.Brand>
         <Nav className="mr-auto">
