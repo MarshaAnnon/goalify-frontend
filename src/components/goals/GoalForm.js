@@ -15,7 +15,6 @@ const GoalForm = ({ goalFormData, history, updateGoalForm, topicId, createGoal }
     }
 
     const handleSubmit = event => {
-        debugger
         event.preventDefault()
         createGoal({
             ...goalFormData,
