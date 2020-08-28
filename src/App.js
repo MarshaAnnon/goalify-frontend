@@ -51,8 +51,10 @@ class App extends React.Component {
             exact path='/topics/:topicId/goals/:id'
             render={ props => { 
             const topic = topics.find(topic => topic.id === props.match.params.topicId)
-            const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
-            return <GoalCard goal={goal}{...props} topic={topic}/>
+            if (topic){
+              const goal = topic.attributes.goals.find(goal => goal.id.toString() === props.match.params.id)
+              return <GoalCard goal={goal}{...props} topic={topic}/>
+            }
           }} />
         </Switch>
       </div>
