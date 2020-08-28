@@ -8,7 +8,7 @@ const Goals = ({ goals, topicId }) => {
             <div className="topics-container">
                 <div className="topics">
                     <p key={goal.id}>
-                        <Link to={`/topics/${topicId}/goals/${goal.id}`}>
+                        <Link className="link" to={`/topics/${topicId}/goals/${goal.id}`}>
                             {goal.goal_name}
                         </Link>
                     </p>
